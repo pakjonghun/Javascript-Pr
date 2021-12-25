@@ -4,14 +4,23 @@ const showModal = document.querySelectorAll(".show-modal");
 const closeModal = document.querySelector(".close-modal");
 const overlay = document.querySelector(".overlay");
 
+const togglaModal = () => {
+  modal.classList.toggle("hidden");
+  overlay.classList.toggle("hidden");
+};
+
 showModal.forEach((item) =>
   item.addEventListener("click", () => {
-    modal.classList.toggle("hidden");
-    overlay.classList.toggle("hidden");
+    togglaModal();
   })
 );
 
 closeModal.addEventListener("click", () => {
-  modal.classList.toggle("hidden");
-  overlay.classList.toggle("hidden");
+  togglaModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !modal.matches(".hidden")) {
+    togglaModal();
+  }
 });
